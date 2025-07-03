@@ -1,0 +1,18 @@
+// .sequelizerc
+const path = require("path");
+
+module.exports = {
+  config: path.resolve("./config/config.ts"),
+  "models-path": path.resolve("./modules/auth/models"),
+  "migrations-path": path.resolve("./modules/auth/migrations"),
+  "seeders-path": path.resolve("./modules/auth/seeders"),
+};
+
+
+module.exports = {
+  config: path.resolve("./config/config.ts"),
+  "models-path": path.resolve("./modules/customer/models"),
+  "migrations-path": path.resolve("./modules/customer/migrations"),
+  "seeders-path": path.resolve("./modules/customer/seeders"),
+};
+

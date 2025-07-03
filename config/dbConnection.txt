@@ -1,0 +1,63 @@
+const connectMysql = async (): Promise<Sequelize> => {
+  const sequelize = new Sequelize(
+    process.env.MYSQL_DB as string,
+    process.env.MYSQL_USER as string,
+    process.env.MYSQL_PASSWORD as string,
+    {
+      host: process.env.MYSQL_HOST,
+      port: Number(process.env.MYSQL_PORT),
+      dialect: process.env.MYSQL_DIALECT as any,
+      logging: false,
+    }
+  );
+
+  try {
+    await sequelize.authenticate();
+    console.log("✅ Connected to MySQL");
+  } catch (err) {
+    console.error("❌ Unable to connect to MySQL:", err);
+    throw err;
+  }
+
+  return sequelize;
+};
+
+// === MSSQL ===
+const connectMssql = async (): Promise<Sequelize> => {
+  const sequelize = new Sequelize(
+    process.env.MSSQL_DB as string,
+    process.env.MSSQL_USER as string,
+    process.env.MSSQL_PASSWORD as string,
+    {
+      host: process.env.MSSQL_HOST,
+      port: Number(process.env.MSSQL_PORT),
+      dialect: process.env.MSSQL_DIALECT as any,
+      dialectOptions: {
+        options: {
+          encrypt: true,
+          trustServerCertificate: true,
+        },
+      },
+      logging: true,
+    }
+  );
+
+  try {
+    await sequelize.authenticate();
+    console.log("✅ Connected to MSSQL");
+  } catch (err) {
+    console.error("❌ Unable to connect to MSSQL:", err);
+    throw err;
+  }
+
+  return sequelize;
+};
+
+
+
+
+
+case supportedDbTypes.mysql:
+      return connectMysql();
+    case supportedDbTypes.mssql:
+      return connectMssql();
