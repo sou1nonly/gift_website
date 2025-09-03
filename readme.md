@@ -1,6 +1,6 @@
 ## Setup and Configure FiniQBook
 
-> **Note:** This project uses TypeScript. All scripts (like migrations, seeds, and module creation) are run using `ts-node`.
+> **Note:** This project uses TypeScript. All scripts (like migrations, seeds, and module creation) are run using `ts-node`..
 
 ### Configure finiqbook with npm
 
